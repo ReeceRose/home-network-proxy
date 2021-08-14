@@ -7,6 +7,8 @@ const (
 	API_PORT = "API_PORT"
 	// CERT_DIR is a key used to lookup the certificate directory (Used by: api/docker)
 	CERT_DIR = "CERT_DIR"
+	// CLIENT_CERT is a key used to lookup the client certificate file (Used by: reporting-tool)
+	CLIENT_CERT = "CLIENT_CERT"
 	// API_CERT is a key used to lookup the api certificate file (Used by: api)
 	API_CERT = "API_CERT"
 	// API_KEY is a key used to lookup the api certificate key (Used by: api)
