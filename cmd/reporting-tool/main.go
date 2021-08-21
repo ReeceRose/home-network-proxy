@@ -26,7 +26,7 @@ func main() {
 	ip := string(data)
 
 	payload := new(bytes.Buffer)
-	json.NewEncoder(payload).Encode(types.IPRequest{
+	json.NewEncoder(payload).Encode(types.IP{
 		ExternalIP: ip,
 	})
 
