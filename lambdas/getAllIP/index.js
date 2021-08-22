@@ -9,8 +9,8 @@ exports.handler = async (event) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        message: "please specify userID in query string",
+      data: JSON.stringify({
+        error: "please specify userID in query string",
       }),
     };
   }
@@ -34,7 +34,7 @@ exports.handler = async (event) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        message: results.Items,
+        data: results.Items,
       }),
     };
   } catch (err) {
@@ -45,7 +45,7 @@ exports.handler = async (event) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        message: err.message,
+        error: err.message,
       }),
     };
   }
