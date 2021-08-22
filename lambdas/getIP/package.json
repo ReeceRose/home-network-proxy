@@ -1,7 +1,7 @@
 {
-  "name": "get-all-ip",
+  "name": "get-ip",
   "version": "1.0.0",
-  "description": "Get all external IPs lambda function",
+  "description": "Get an external IP lambda function",
   "main": "index.js",
   "author": "Reece Rose",
   "license": "MIT",

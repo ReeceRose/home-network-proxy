@@ -13,6 +13,12 @@ output "get_all_ip_function_name" {
 }
 
 output "health_function_name" {
+  description = "Name of the GetIP Lambda function."
+
+  value = aws_lambda_function.get_ip.function_name
+}
+
+output "health_function_name" {
   description = "Name of the Health Lambda function."
 
   value = aws_lambda_function.health.function_name

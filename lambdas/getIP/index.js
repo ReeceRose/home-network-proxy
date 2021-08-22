@@ -3,27 +3,30 @@
 const { DynamoDBClient, QueryCommand } = require("@aws-sdk/client-dynamodb");
 
 exports.handler = async (event) => {
-  if (!event.queryStringParameters || !event.queryStringParameters["userID"]) {
+  if (
+    !event.queryStringParameters ||
+    !event.queryStringParameters["externalIP"]
+  ) {
     return {
       statusCode: 400,
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        message: "please specify userID in query string",
+        message: "please specify externalIP in query string",
       }),
     };
   }
-  userID = event.queryStringParameters["userID"];
+  externalIP = event.queryStringParameters["externalIP"];
 
   const { TABLE_NAME } = process.env;
 
   const client = new DynamoDBClient({ region: "us-east-1" });
   const command = new QueryCommand({
     TableName: TABLE_NAME,
-    KeyConditionExpression: "#UserID = :userID",
+    KeyConditionExpression: "#ExternalIP = :externalIP",
     ExpressionAttributeValues: {
-      ":userID": userID,
+      ":externalIP": externalIP,
     },
   });
   try {

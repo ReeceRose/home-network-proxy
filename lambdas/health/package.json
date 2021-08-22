@@ -1,7 +1,7 @@
 {
   "name": "health",
   "version": "1.0.0",
-  "description": "Health endpoint",
+  "description": "Health lambda function",
   "main": "index.js",
   "author": "Reece Rose",
   "license": "MIT"

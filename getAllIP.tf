@@ -15,7 +15,7 @@ resource "aws_s3_bucket_object" "lambda_get_all_ip" {
 }
 
 resource "aws_lambda_function" "get_all_ip" {
-  function_name = "GetAllIP"
+  function_name = "Get_All_IP"
 
   s3_bucket = aws_s3_bucket.lambda_bucket.id
   s3_key    = aws_s3_bucket_object.lambda_get_all_ip.key
@@ -26,6 +26,13 @@ resource "aws_lambda_function" "get_all_ip" {
   source_code_hash = data.archive_file.lambda_get_all_ip_zip.output_base64sha256
 
   role = aws_iam_role.lambda_exec.arn
+
+  environment {
+    variables = {
+      TABLE_NAME                          = var.table_name
+      AWS_NODEJS_CONNECTION_REUSE_ENABLED = "1"
+    }
+  }
 }
 
 resource "aws_cloudwatch_log_group" "get_all_ip" {
