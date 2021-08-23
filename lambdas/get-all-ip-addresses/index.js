@@ -3,18 +3,7 @@
 const { DynamoDBClient, QueryCommand } = require("@aws-sdk/client-dynamodb");
 
 exports.handler = async (event) => {
-  if (!event.queryStringParameters || !event.queryStringParameters["userID"]) {
-    return {
-      statusCode: 400,
-      headers: {
-        "Content-Type": "application/json",
-      },
-      data: JSON.stringify({
-        error: "please specify userID in query string",
-      }),
-    };
-  }
-  userID = event.queryStringParameters["userID"];
+  userID = "123"; //TODO: read from auth
 
   const { TABLE_NAME } = process.env;
 
@@ -26,6 +15,7 @@ exports.handler = async (event) => {
       ":userID": userID,
     },
   });
+
   try {
     const results = await client.send(command);
     return {
