@@ -31,7 +31,7 @@ func main() {
 	})
 
 	_, statusCode, err := client.Post(
-		utils.GetVariable(consts.API_URL)+"/insert_ip",
+		utils.GetVariable(consts.API_URL)+"/ip",
 		payload,
 	)
 	if err != nil {

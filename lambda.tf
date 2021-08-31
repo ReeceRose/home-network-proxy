@@ -53,7 +53,7 @@ resource "aws_apigatewayv2_integration" "get_all_ip_addresses" {
 resource "aws_apigatewayv2_route" "get_all_ip_addresses" {
   api_id = aws_apigatewayv2_api.home_network_proxy.id
 
-  route_key = "GET /get_all_ip_addresses"
+  route_key = "GET /ip/all"
   target    = "integrations/${aws_apigatewayv2_integration.get_all_ip_addresses.id}"
 }
 
