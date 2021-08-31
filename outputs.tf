@@ -12,6 +12,11 @@ output "get_all_ip_addresses_function_name" {
   value = aws_lambda_function.get_all_ip_addresses.function_name
 }
 
+output "upsert_ip_address_function_name" {
+  description = "Name of the Upsert IP Address Lambda function."
+
+  value = aws_lambda_function.upsert_ip_address.function_name
+}
 
 output "health_function_name" {
   description = "Name of the health Lambda function."
