@@ -10,9 +10,9 @@ exports.handler = async (event) => {
   const client = new DynamoDBClient({ region: "us-east-1" });
   const command = new ScanCommand({
     TableName: TABLE_NAME,
-    FilterExpression: "UserID = :userID",
+    FilterExpression: "UserId = :userId",
     ExpressionAttributeValues: {
-      ":userID": { S: userID },
+      ":userId": { S: userID },
     },
   });
 

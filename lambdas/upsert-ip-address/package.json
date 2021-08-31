@@ -4,5 +4,9 @@
   "description": "Upsert IP address lambda function",
   "main": "index.js",
   "author": "Reece Rose",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.28.0",
+    "uuid": "^8.3.2"
+  }
 }
