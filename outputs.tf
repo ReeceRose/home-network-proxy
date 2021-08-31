@@ -6,20 +6,15 @@ output "lambda_bucket_name" {
   value = aws_s3_bucket.lambda_bucket.id
 }
 
-output "get_all_ip_function_name" {
-  description = "Name of the GetAllIP Lambda function."
+output "get_all_ip_addresses_function_name" {
+  description = "Name of the Get all IP addresses Lambda function."
 
-  value = aws_lambda_function.get_all_ip.function_name
+  value = aws_lambda_function.get_all_ip_addresses.function_name
 }
 
-output "get_ip_function_name" {
-  description = "Name of the GetIP Lambda function."
-
-  value = aws_lambda_function.get_ip.function_name
-}
 
 output "health_function_name" {
-  description = "Name of the Health Lambda function."
+  description = "Name of the health Lambda function."
 
   value = aws_lambda_function.health.function_name
 }
