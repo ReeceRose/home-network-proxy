@@ -1,14 +1,10 @@
 package client
 
 import (
-	"crypto/x509"
 	"io"
 	"io/ioutil"
 	"net/http"
 	"time"
-
-	"github.com/ReeceRose/home-network-proxy/internal/consts"
-	"github.com/ReeceRose/home-network-proxy/internal/utils"
 )
 
 // Client is an interface which provides method signatures for a HTTP client
@@ -28,14 +24,6 @@ var (
 
 // NewClient returns an instanced HTTP client
 func NewClient() (Client, error) {
-	certDir := utils.GetVariable(consts.CERT_DIR)
-	caCert, err := ioutil.ReadFile(certDir + "/" + utils.GetVariable(consts.CLIENT_CERT))
-	if err != nil {
-		panic(err)
-	}
-	caCertPool := x509.NewCertPool()
-	caCertPool.AppendCertsFromPEM(caCert)
-
 	return &standardClient{
 		client: &http.Client{
 			Timeout: time.Second * 30,

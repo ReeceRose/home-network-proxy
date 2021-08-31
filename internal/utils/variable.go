@@ -20,10 +20,6 @@ func getDefaultForKey(key string) string {
 	switch key {
 	case consts.API_URL:
 		return "https://p7xsh0rld4.execute-api.us-east-1.amazonaws.com/production"
-	case consts.CERT_DIR:
-		return "certs"
-	case consts.CLIENT_CERT:
-		return "localhost.crt"
 	}
 	return ""
 }
