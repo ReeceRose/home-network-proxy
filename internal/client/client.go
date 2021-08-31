@@ -14,8 +14,7 @@ type Client interface {
 }
 
 type standardClient struct {
-	client           *http.Client
-	customCertClient *http.Client
+	client *http.Client
 }
 
 var (
