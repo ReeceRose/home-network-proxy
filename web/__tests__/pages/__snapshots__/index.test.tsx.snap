@@ -2,6 +2,10 @@
 
 exports[`Index page matches snapshot 1`] = `
 <DocumentFragment>
-  <div />
+  <amplify-container>
+    <amplify-auth-container>
+      <amplify-authenticator />
+    </amplify-auth-container>
+  </amplify-container>
 </DocumentFragment>
 `;
