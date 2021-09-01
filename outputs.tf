@@ -36,3 +36,9 @@ output "base_url" {
   value = aws_apigatewayv2_stage.production.invoke_url
 }
 
+output "auth_url" {
+  description = "Base URL for auth service."
+
+  value = aws_cognito_user_pool_domain.main.domain
+}
+
