@@ -1,6 +1,6 @@
 package types
 
-import "go.mongodb.org/mongo-driver/bson/primitive"
+import "github.com/google/uuid"
 
 type IPResponse struct {
 	Data       []IP
@@ -11,8 +11,14 @@ type IPResponse struct {
 
 // IP is the database model used to store external IPs (and some other useful information)
 type IP struct {
-	ID         primitive.ObjectID `json:"id" bson:"_id"`
-	ExternalIP string             `json:"externalIP" bson:"externalIP"`
-	Created    int64              `json:"created" bson:"_created"`
-	Updated    int64              `json:"updated" bson:"_updated"`
+	ID         string `json:"id"`
+	ExternalIP string `json:"externalIP"`
+	Created    string `json:"created"`
+	Updated    string `json:"updated"`
+	UserId     string `json:"userId"`
+}
+
+// AgentInformation contains an ID which is used to differentiate between different agents
+type ReportingToolAgent struct {
+	ID uuid.UUID
 }

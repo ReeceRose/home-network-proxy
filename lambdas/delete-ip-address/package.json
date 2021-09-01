@@ -1,0 +1,11 @@
+{
+  "name": "delete-ip-address",
+  "version": "1.0.0",
+  "description": "Delete IP address lambda function",
+  "main": "index.js",
+  "author": "Reece Rose",
+  "license": "MIT",
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.28.0"
+  }
+}

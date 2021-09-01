@@ -7,6 +7,7 @@ import (
 
 	"github.com/ReeceRose/home-network-proxy/internal/client"
 	"github.com/ReeceRose/home-network-proxy/internal/consts"
+	"github.com/ReeceRose/home-network-proxy/internal/store"
 	"github.com/ReeceRose/home-network-proxy/internal/types"
 	"github.com/ReeceRose/home-network-proxy/internal/utils"
 )
@@ -18,22 +19,25 @@ func main() {
 	if err != nil {
 		log.Fatalln("Failed to initiate a HTTP client")
 	}
-	data, _, err := client.Get("https://ifconfig.me", false)
+	data, _, err := client.Get("https://ifconfig.me")
 	if err != nil {
 		log.Fatalln("Failed to external IP from ifconfig.me. Error: " + err.Error())
 	}
 
 	ip := string(data)
 
+	id := store.Instance().GetReportingToolAgentInformation().ID.String()
+
 	payload := new(bytes.Buffer)
 	json.NewEncoder(payload).Encode(types.IP{
+		ID:         id,
 		ExternalIP: ip,
+		UserId:     "123", //TODO: refactor to have auth
 	})
 
 	_, statusCode, err := client.Post(
-		utils.GetVariable(consts.API_URL)+"ip/",
+		utils.GetVariable(consts.API_URL)+"/ip",
 		payload,
-		true,
 	)
 	if err != nil {
 		log.Fatalln("Failed to send IP to API. Error: " + err.Error())

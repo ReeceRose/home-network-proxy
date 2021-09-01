@@ -1,0 +1,3 @@
+# Example of crontab which runs reporting-tool on the start of every hour. This could also be run as a service
+
+0 * * * * /usr/bin/reporting-tool
