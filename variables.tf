@@ -21,3 +21,7 @@ variable "environment" {
   description = "Name of environment"
   default     = "production"
 }
+
+variable "access_token" {
+  description = "GitHub access token"
+}
