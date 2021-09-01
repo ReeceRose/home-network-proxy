@@ -18,6 +18,12 @@ output "upsert_ip_address_function_name" {
   value = aws_lambda_function.upsert_ip_address.function_name
 }
 
+output "delete_ip_address_function_name" {
+  description = "Name of the Delete IP Address Lambda function."
+
+  value = aws_lambda_function.delete_ip_address.function_name
+}
+
 output "health_function_name" {
   description = "Name of the health Lambda function."
 

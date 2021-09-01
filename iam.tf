@@ -25,7 +25,7 @@ resource "aws_iam_role_policy" "dynamodb_policy" {
     "Statement" : [
       {
         "Effect" : "Allow",
-        "Action" : ["dynamodb:Scan", "dynamodb:GetItem", "dynamodb:UpdateItem", "dynamodb:PutItem"],
+        "Action" : ["dynamodb:Scan", "dynamodb:GetItem", "dynamodb:UpdateItem", "dynamodb:PutItem", "dynamodb:DeleteItem"],
         "Resource" : "arn:aws:dynamodb:us-east-1:799522438486:table/${var.table_name}"
       }
     ]
