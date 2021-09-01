@@ -1,5 +1,7 @@
 package types
 
+import "github.com/google/uuid"
+
 type IPResponse struct {
 	Data       []IP
 	StatusCode int
@@ -11,6 +13,12 @@ type IPResponse struct {
 type IP struct {
 	ID         string `json:"id"`
 	ExternalIP string `json:"externalIP"`
-	Created    int64  `json:"created"`
-	Updated    int64  `json:"updated"`
+	Created    string `json:"created"`
+	Updated    string `json:"updated"`
+	UserId     string `json:"userId"`
+}
+
+// AgentInformation contains an ID which is used to differentiate between different agents
+type ReportingToolAgent struct {
+	ID uuid.UUID
 }

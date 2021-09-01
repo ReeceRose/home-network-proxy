@@ -1,7 +1,5 @@
 // Lambda function code
 
-const { v4: uuidv4 } = require("uuid");
-
 const {
   DynamoDBClient,
   GetItemCommand,
@@ -69,7 +67,7 @@ exports.handler = async (event) => {
     command = new PutItemCommand({
       TableName: TABLE_NAME,
       Item: {
-        Id: { S: uuidv4() },
+        Id: { S: body.id },
         Created: { S: now },
         Updated: { S: now },
         ExternalIP: { S: body.externalIP },

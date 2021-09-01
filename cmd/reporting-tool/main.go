@@ -7,6 +7,7 @@ import (
 
 	"github.com/ReeceRose/home-network-proxy/internal/client"
 	"github.com/ReeceRose/home-network-proxy/internal/consts"
+	"github.com/ReeceRose/home-network-proxy/internal/store"
 	"github.com/ReeceRose/home-network-proxy/internal/types"
 	"github.com/ReeceRose/home-network-proxy/internal/utils"
 )
@@ -25,9 +26,13 @@ func main() {
 
 	ip := string(data)
 
+	id := store.Instance().GetReportingToolAgentInformation().ID.String()
+
 	payload := new(bytes.Buffer)
 	json.NewEncoder(payload).Encode(types.IP{
+		ID:         id,
 		ExternalIP: ip,
+		UserId:     "123", //TODO: refactor to have auth
 	})
 
 	_, statusCode, err := client.Post(
