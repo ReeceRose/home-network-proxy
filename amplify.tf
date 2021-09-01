@@ -14,9 +14,10 @@ resource "aws_amplify_app" "web" {
             - yarn install
         build:
           commands:
+            - yarn build
             - yarn export
       artifacts:
-        baseDirectory: out
+        baseDirectory: ./web/out
         files:
           - '**/*'
       cache:
@@ -41,6 +42,8 @@ resource "aws_amplify_app" "web" {
 resource "aws_amplify_branch" "production" {
   app_id      = aws_amplify_app.web.id
   branch_name = "main"
+
+  display_name = "production"
 
   framework = "React"
   stage     = "PRODUCTION"
