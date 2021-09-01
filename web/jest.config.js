@@ -1,5 +1,5 @@
 module.exports = {
-  setupFiles: ['<rootDir>/.jest/setEnvVars.js'],
+  setupFiles: [],
   testPathIgnorePatterns: ['<rootDir>/.next/', '<rootDir>/node_modules/'],
   setupFilesAfterEnv: ['<rootDir>/.jest/setupTests.js'],
   transform: {
