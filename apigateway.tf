@@ -1,6 +1,25 @@
 resource "aws_apigatewayv2_api" "home_network_proxy" {
   name          = "home_network_proxy_api"
   protocol_type = "HTTP"
+
+  cors_configuration {
+    allow_headers = ["*"]
+    allow_methods = ["*"]
+    allow_origins = ["*"]
+  }
+}
+
+resource "aws_apigatewayv2_authorizer" "home_network_proxy" {
+  api_id           = aws_apigatewayv2_api.home_network_proxy.id
+  authorizer_type  = "JWT"
+  identity_sources = ["$request.header.Authorization"]
+
+  name = "jwt-auth"
+
+  jwt_configuration {
+    audience = ["5q42kpv9mh7spcjg63l88sqpah"]
+    issuer   = "https://${aws_cognito_user_pool.pool.endpoint}"
+  }
 }
 
 resource "aws_apigatewayv2_stage" "production" {

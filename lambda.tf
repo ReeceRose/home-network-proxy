@@ -55,6 +55,9 @@ resource "aws_apigatewayv2_route" "get_all_ip_addresses" {
 
   route_key = "GET /ip/all"
   target    = "integrations/${aws_apigatewayv2_integration.get_all_ip_addresses.id}"
+
+  authorization_type = "JWT"
+  authorizer_id      = aws_apigatewayv2_authorizer.home_network_proxy.id
 }
 
 resource "aws_lambda_permission" "get_all_ip_addresses_permission" {
@@ -123,6 +126,9 @@ resource "aws_apigatewayv2_route" "upsert_ip_address" {
 
   route_key = "POST /ip"
   target    = "integrations/${aws_apigatewayv2_integration.upsert_ip_address.id}"
+
+  authorization_type = "JWT"
+  authorizer_id      = aws_apigatewayv2_authorizer.home_network_proxy.id
 }
 
 resource "aws_lambda_permission" "upsert_ip_address_permission" {
@@ -152,7 +158,7 @@ resource "aws_s3_bucket_object" "lambda_delete_ip_address" {
 }
 
 resource "aws_lambda_function" "delete_ip_address" {
-  function_name = "delete_ip_address"
+  function_name = "Delete_IP_Address"
 
   s3_bucket = aws_s3_bucket.lambda_bucket.id
   s3_key    = aws_s3_bucket_object.lambda_delete_ip_address.key
@@ -191,6 +197,9 @@ resource "aws_apigatewayv2_route" "delete_ip_address" {
 
   route_key = "DELETE /ip"
   target    = "integrations/${aws_apigatewayv2_integration.delete_ip_address.id}"
+
+  authorization_type = "JWT"
+  authorizer_id      = aws_apigatewayv2_authorizer.home_network_proxy.id
 }
 
 resource "aws_lambda_permission" "delete_ip_address_permission" {
