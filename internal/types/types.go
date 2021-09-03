@@ -20,5 +20,7 @@ type IP struct {
 
 // AgentInformation contains an ID which is used to differentiate between different agents
 type ReportingToolAgent struct {
-	ID uuid.UUID
+	ID     uuid.UUID
+	APIKey string
+	UserID string
 }

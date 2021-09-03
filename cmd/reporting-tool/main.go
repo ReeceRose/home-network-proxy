@@ -26,18 +26,21 @@ func main() {
 
 	ip := string(data)
 
-	id := store.Instance().GetReportingToolAgentInformation().ID.String()
+	info := store.Instance().GetReportingToolAgentInformation()
 
 	payload := new(bytes.Buffer)
 	json.NewEncoder(payload).Encode(types.IP{
-		ID:         id,
+		ID:         info.ID.String(),
 		ExternalIP: ip,
-		UserId:     "123", //TODO: refactor to have auth
+		UserId:     info.UserID,
 	})
-
+	headers := make(map[string]string)
+	headers["Authorization"] = info.APIKey
+	headers["UserID"] = info.UserID
 	_, statusCode, err := client.Post(
 		utils.GetVariable(consts.API_URL)+"/ip",
 		payload,
+		headers,
 	)
 	if err != nil {
 		log.Fatalln("Failed to send IP to API. Error: " + err.Error())

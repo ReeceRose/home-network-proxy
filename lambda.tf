@@ -127,8 +127,8 @@ resource "aws_apigatewayv2_route" "upsert_ip_address" {
   route_key = "POST /ip"
   target    = "integrations/${aws_apigatewayv2_integration.upsert_ip_address.id}"
 
-  authorization_type = "JWT"
-  authorizer_id      = aws_apigatewayv2_authorizer.home_network_proxy.id
+  authorization_type = "CUSTOM"
+  authorizer_id      = aws_apigatewayv2_authorizer.home_network_proxy-lambda.id
 }
 
 resource "aws_lambda_permission" "upsert_ip_address_permission" {
@@ -268,9 +268,6 @@ resource "aws_apigatewayv2_route" "api_key_auth" {
 
   route_key = "POST /auth"
   target    = "integrations/${aws_apigatewayv2_integration.api_key_auth.id}"
-
-  authorization_type = "CUSTOM"
-  authorizer_id      = aws_apigatewayv2_authorizer.home_network_proxy-lambda.id
 }
 
 resource "aws_lambda_permission" "api_key_auth_permission" {
