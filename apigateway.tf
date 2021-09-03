@@ -22,6 +22,20 @@ resource "aws_apigatewayv2_authorizer" "home_network_proxy" {
   }
 }
 
+
+resource "aws_apigatewayv2_authorizer" "home_network_proxy-lambda" {
+  api_id           = aws_apigatewayv2_api.home_network_proxy.id
+  authorizer_type  = "REQUEST"
+  authorizer_uri   = aws_lambda_function.api_key_auth.invoke_arn
+  identity_sources = ["$request.header.Authorization"]
+
+  enable_simple_responses = true
+
+  name = "api-key-auth"
+
+  authorizer_payload_format_version = "2.0"
+}
+
 resource "aws_apigatewayv2_stage" "production" {
   api_id = aws_apigatewayv2_api.home_network_proxy.id
 
