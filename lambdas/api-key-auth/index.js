@@ -28,7 +28,7 @@ exports.handler = async (event) => {
 
   try {
     let result = await client.send(command);
-    if (result.Items) {
+    if (result.Items.length >= 1) {
       return {
         isAuthorized: true,
         context: {},

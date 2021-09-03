@@ -36,6 +36,7 @@ terraform.rc
 response.json
 
 reporting-tool.json
+reporting-tool
 
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
