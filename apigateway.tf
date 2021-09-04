@@ -17,7 +17,7 @@ resource "aws_apigatewayv2_authorizer" "home_network_proxy" {
   name = "jwt-auth"
 
   jwt_configuration {
-    audience = ["5q42kpv9mh7spcjg63l88sqpah"]
+    audience = ["3kp5oij5gsjhbhdg3a5gqku4eq"]
     issuer   = "https://${aws_cognito_user_pool.pool.endpoint}"
   }
 }

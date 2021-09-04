@@ -1,11 +1,17 @@
 resource "aws_cognito_identity_pool" "pool" {
   identity_pool_name               = "home-network-proxy-pool"
   allow_unauthenticated_identities = false
-
 }
 
 resource "aws_cognito_user_pool" "pool" {
-  name = "home-network-proxy-pool"
+  name                     = "home-network-proxy-pool"
+  auto_verified_attributes = ["email"]
+  account_recovery_setting {
+    recovery_mechanism {
+      name     = "verified_email"
+      priority = 1
+    }
+  }
 }
 
 resource "aws_cognito_identity_pool_roles_attachment" "main" {
