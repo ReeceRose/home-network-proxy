@@ -8,7 +8,6 @@ import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
 import axios from 'axios';
 import { IPAddress } from '../interfaces/Index';
 
-import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ReportedIPAddress from '../components/Tables/ReportedIPAddress';
 
@@ -62,7 +61,6 @@ const Home = (): JSX.Element => {
     <div className="relative flex flex-col w-full min-h-screen bg-gray-100">
       <div>
         <AmplifySignOut />
-        <Navbar />
         <div className="flex-grow w-full px-4 m-24 mx-auto mb-0 md:px-10">
           <div className="flex flex-wrap">
             <div className="w-full px-4 mb-12 xl:mb-0">
