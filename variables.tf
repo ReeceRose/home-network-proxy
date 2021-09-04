@@ -12,6 +12,11 @@ variable "table_name" {
   default     = "home-network-proxy"
 }
 
+variable "table_name_auth" {
+  description = "Dynamodb table name for auth"
+  default     = "home-network-proxy-auth"
+}
+
 variable "table_billing_mode" {
   description = "Controls how you are charged for read and write throughput and how you manage capacity."
   default     = "PAY_PER_REQUEST"

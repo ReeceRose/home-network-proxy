@@ -24,6 +24,12 @@ output "delete_ip_address_function_name" {
   value = aws_lambda_function.delete_ip_address.function_name
 }
 
+output "api_key_auth_function_name" {
+  description = "Name of the API Key Auth Lambda function."
+
+  value = aws_lambda_function.api_key_auth.function_name
+}
+
 output "health_function_name" {
   description = "Name of the health Lambda function."
 
@@ -34,5 +40,11 @@ output "base_url" {
   description = "Base URL for API Gateway."
 
   value = aws_apigatewayv2_stage.production.invoke_url
+}
+
+output "auth_url" {
+  description = "Base URL for auth service."
+
+  value = aws_cognito_user_pool_domain.main.domain
 }
 

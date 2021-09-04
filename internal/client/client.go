@@ -10,7 +10,7 @@ import (
 // Client is an interface which provides method signatures for a HTTP client
 type Client interface {
 	Get(url string) ([]byte, int, error)
-	Post(url string, data io.Reader) ([]byte, int, error)
+	Post(url string, data io.Reader, headers map[string]string) ([]byte, int, error)
 }
 
 type standardClient struct {
@@ -31,13 +31,16 @@ func NewClient() (Client, error) {
 }
 
 // makeRequest will make any HTTP request and also sends common data required for each request
-func (c *standardClient) makeRequest(method string, url string, body io.Reader) ([]byte, int, error) {
+func (c *standardClient) makeRequest(method string, url string, body io.Reader, headers map[string]string) ([]byte, int, error) {
 	request, err := http.NewRequest(method, url, body)
 	if err != nil {
 		return nil, -100, err
 	}
 
 	request.Header.Set("Content-Type", "application/json")
+	for header := range headers {
+		request.Header.Set(header, headers[header])
+	}
 	response, err := c.client.Do(request)
 	if err != nil {
 		return nil, -101, err
@@ -54,10 +57,10 @@ func (c *standardClient) makeRequest(method string, url string, body io.Reader) 
 
 // Get makes a GET request to a given URL
 func (c *standardClient) Get(url string) ([]byte, int, error) {
-	return c.makeRequest("GET", url, nil)
+	return c.makeRequest("GET", url, nil, nil)
 }
 
 // Post makes a POST request to a givn URL
-func (c *standardClient) Post(url string, data io.Reader) ([]byte, int, error) {
-	return c.makeRequest("POST", url, data)
+func (c *standardClient) Post(url string, data io.Reader, headers map[string]string) ([]byte, int, error) {
+	return c.makeRequest("POST", url, data, headers)
 }

@@ -32,6 +32,21 @@ resource "aws_iam_role_policy" "dynamodb_policy" {
   })
 }
 
+resource "aws_iam_role_policy" "dynamodb_policy_auth" {
+  name = "dynamodb_policy_auth"
+  role = aws_iam_role.lambda_exec.id
+
+  policy = jsonencode({
+    "Version" : "2012-10-17"
+    "Statement" : [
+      {
+        "Effect" : "Allow",
+        "Action" : ["dynamodb:Scan"],
+        "Resource" : "arn:aws:dynamodb:us-east-1:799522438486:table/${var.table_name_auth}"
+      }
+    ]
+  })
+}
 
 resource "aws_iam_role_policy_attachment" "lambda_policy" {
   role       = aws_iam_role.lambda_exec.name
