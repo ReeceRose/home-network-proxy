@@ -3,9 +3,14 @@ import { IPAddress } from '../../interfaces/Index';
 type Props = {
   address: IPAddress;
   deleteIP: () => void;
+  openModal: () => void;
 };
 
-const ReportedIPAddress: React.FC<Props> = ({ address, deleteIP }) => {
+const ReportedIPAddress: React.FC<Props> = ({
+  address,
+  deleteIP,
+  openModal,
+}) => {
   return (
     <div
       className={
@@ -82,7 +87,7 @@ const ReportedIPAddress: React.FC<Props> = ({ address, deleteIP }) => {
                 <button
                   className="px-3 py-1 mb-1 mr-1 text-xs font-bold text-white uppercase transition-all duration-150 ease-linear bg-blue-600 rounded outline-none active:bg-indigo-600 focus:outline-none"
                   type="button"
-                  // onClick={openModal}
+                  onClick={openModal}
                 >
                   Execute
                 </button>
