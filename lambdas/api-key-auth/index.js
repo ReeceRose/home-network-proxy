@@ -35,8 +35,6 @@ exports.handler = async (event) => {
         statusCode: 200,
       };
     }
-  } catch (err) {
-    console.log(err);
-  }
+  } catch (err) {}
   return response;
 };

@@ -36,7 +36,6 @@ exports.handler = async (event) => {
   try {
     let result = await client.send(command);
     if (result.Item) {
-      console.log(result.Item);
       if (result.Item.UserId.S == userId) {
         const command = new DeleteItemCommand({
           TableName: TABLE_NAME,

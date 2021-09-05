@@ -1,0 +1,12 @@
+{
+  "name": "execute-ssh-remotely",
+  "version": "1.0.0",
+  "description": "Execute SSH remotely lambda function",
+  "main": "index.js",
+  "author": "Reece Rose",
+  "license": "MIT",
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.29.0",
+    "node-ssh": "^12.0.0"
+  }
+}

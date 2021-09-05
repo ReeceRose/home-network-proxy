@@ -30,6 +30,12 @@ output "api_key_auth_function_name" {
   value = aws_lambda_function.api_key_auth.function_name
 }
 
+output "execute_ssh_remotely_function_name" {
+  description = "Name of the API Key Auth Lambda function."
+
+  value = aws_lambda_function.execute_ssh_remotely.function_name
+}
+
 output "health_function_name" {
   description = "Name of the health Lambda function."
 
