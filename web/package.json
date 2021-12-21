@@ -17,7 +17,7 @@
     "prepare": "cd ../ && husky install web/.husky"
   },
   "dependencies": {
-    "@aws-amplify/ui-react": "^1.2.11",
+    "@aws-amplify/ui-react": "^1.2.26",
     "autoprefixer": "^10.2.4",
     "aws-amplify": "^4.2.5",
     "axios": "^0.21.1",
