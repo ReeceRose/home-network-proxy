@@ -6,6 +6,6 @@
   "author": "Reece Rose",
   "license": "MIT",
   "dependencies": {
-    "@aws-sdk/client-dynamodb": "^3.28.0"
+    "@aws-sdk/client-dynamodb": "^3.43.0"
   }
 }
